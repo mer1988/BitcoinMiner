@@ -13,14 +13,15 @@ class Master(nrOfWorkers: Int, nrOfMessages: Int, numOfZeros :Int) extends Actor
   var processed : Int = 0
   var coins_list = new ListBuffer[String]()
 
-  var workload: Int = 1
+  var workload: Int = 5
 
   var prefix : String = "mer"
 
 
 
-  val workerRouter = context.actorOf(
+  var workerRouter = context.actorOf(
     Props[ServerWorker].withRouter(RoundRobinRouter(nrOfWorkers)), name = "workerRouter")
+
 
   def receive = {
     case Start ⇒
@@ -33,6 +34,12 @@ class Master(nrOfWorkers: Int, nrOfMessages: Int, numOfZeros :Int) extends Actor
 
         workerRouter ! Work(messages.toList, numOfZeros)
       }
+
+
+    case str: String ⇒
+      println(str)
+      sender ! "Hello!!"
+
 
     case Result(coins) ⇒
       found += coins.length
@@ -51,8 +58,8 @@ class Master(nrOfWorkers: Int, nrOfMessages: Int, numOfZeros :Int) extends Actor
         }
 
         println(found)
-        context.stop(self)
-        context.system.shutdown()
+        //context.stop(self)
+        //context.system.shutdown()
       }
   }
 
