@@ -25,8 +25,8 @@ object Server{
 				     enabled-transports = ["akka.remote.netty.tcp"]
 				     transport = "akka.remote.netty.NettyRemoteTransport"
 				     netty.tcp {
-				        hostname = "127.0.0.1"
-				        port = 2552
+				        hostname = "10.227.170.153"
+				        port = 5678
 				     }
 				   }
 				   log-dead-letters = off

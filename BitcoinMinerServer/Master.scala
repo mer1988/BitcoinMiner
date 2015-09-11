@@ -48,7 +48,7 @@ class Master(nrOfWorkers: Int, numOfMessages: Int, numOfZeros :Int) extends Acto
       if (coins.length > 0){
         found += coins.length
         for(i <- 0 until coins.length)
-          println(coins(i)+"  "+strings(i))
+          println(strings(i)+"  "+coins(i))
       }
 
       if (generated < numOfMessages){
