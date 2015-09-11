@@ -3,6 +3,7 @@
  */
 import akka.actor.ActorRef
 
-case class Result(coins : List[String])
+case class  Result(coins : List[String], strings : List[String])
 case class  Work(workload : List[String], numOfZeros: Int)
 case object Start
+case object Ready

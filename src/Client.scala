@@ -21,10 +21,14 @@ object Client {
         }
         log-dead-letters = off
   } """)))
-    val remotePath = "akka.tcp://BitcoinMinerSystemg@" + remoteIP +":11111/user/master"
+    val remotePath = "akka.tcp://BitcoinMinerSystem@" + remoteIP +":11111/user/master"
 
     val remoteServer = clientSystem.actorSelection(remotePath)
 
+    val client1 = clientSystem.actorOf(Props(classOf[RemoteWorker], remoteServer), name = "client1")
+    val client2 = clientSystem.actorOf(Props(classOf[RemoteWorker], remoteServer), name = "client2")
+    val client3 = clientSystem.actorOf(Props(classOf[RemoteWorker], remoteServer), name = "client3")
+    val client4 = clientSystem.actorOf(Props(classOf[RemoteWorker], remoteServer), name = "client4")
 
   }
 
