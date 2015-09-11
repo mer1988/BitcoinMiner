@@ -28,7 +28,7 @@ object Client {
         }
      """)))
      
-    val remotePath = "akka.tcp://BitcoinMinerSystem@" + remoteIP +":2552/user/master"
+    val remotePath = "akka.tcp://BitcoinMinerSystem@" + remoteIP +":5678/user/master"
     val clientMaster = clientSystem.actorOf(Props(new ClientMaster(remotePath)), name = "LocalActor")  // the local actor
 
   }
