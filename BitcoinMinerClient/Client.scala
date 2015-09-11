@@ -24,14 +24,6 @@ object Client {
           actor {
              provider = "akka.remote.RemoteActorRefProvider"
           }
-remote {
-				     enabled-transports = ["akka.remote.netty.tcp"]
-				     transport = "akka.remote.netty.NettyRemoteTransport"
-				     netty.tcp {
-				        hostname = "127.0.0.1"
-				        port = 11111
-				     }
-				   }
           log-dead-letters = off
         }
      """)))
